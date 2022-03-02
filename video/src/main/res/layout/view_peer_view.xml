@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="peerViewProps"
+            type="api.adhyay.app.videocall.vm.PeerViewProps" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <org.webrtc.SurfaceViewRenderer
+            android:id="@+id/video_renderer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            bind:edias_render="@{peerViewProps.videoTrack}"/>
+
+        <RelativeLayout
+            android:id="@+id/video_hidden"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#19261D"
+            bind:edias_render_empty="@{peerViewProps.videoTrack}">
+
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerInParent="true"
+                android:scaleType="centerInside"
+                android:src="@drawable/user_img" />
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</layout>
